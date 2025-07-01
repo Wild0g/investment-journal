@@ -2,8 +2,8 @@ import { createClient, type User, type Session } from '@supabase/supabase-js'
 import type { Database } from '../types/database'
 
 // Supabase configuration
-export const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'YOUR_SUPABASE_URL'
-export const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'YOUR_SUPABASE_ANON_KEY'
+export const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://demo.supabase.co'
+export const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRlbW8iLCJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MjUxNjQxMCwiZXhwIjoxOTU4MDkyNDEwfQ.demo'
 
 // Create Supabase client with TypeScript support
 export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
