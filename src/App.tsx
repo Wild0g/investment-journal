@@ -1,24 +1,31 @@
-import { useState } from 'react'
+import { useAuth } from './hooks/useAuth'
+import { AuthForm } from './components/AuthForm'
+import { Navigation } from './components/Navigation'
+import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { user, loading } = useAuth()
 
-  return (
-    <div className="App">
-      <h1>Investment Journal</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Building MVP - Week 1, Day 1: Foundation Setup
-        </p>
+  if (loading) {
+    return (
+      <div className="auth-container">
+        <div className="loading-spinner">
+          <div className="spinner"></div>
+          <span>Loading...</span>
+        </div>
       </div>
-      <p className="read-the-docs">
-        AI-coached trading analytics for Indian investors
-      </p>
-    </div>
-  )
+    )
+  }
+
+  if (!user) {
+    return (
+      <div className="auth-container">
+        <AuthForm />
+      </div>
+    )
+  }
+
+  return <Navigation />
 }
 
 export default App
